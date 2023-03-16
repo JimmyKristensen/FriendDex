@@ -1,5 +1,14 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
+      ]
+    ]
+    ,
     "name": "FriendDex",
     "slug": "FriendDex",
     "version": "1.0.0",
