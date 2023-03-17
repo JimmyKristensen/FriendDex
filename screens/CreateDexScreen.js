@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View, SafeAreaView, Image} from 'react-native'
+import { Pressable, StyleSheet, Text, TextInput, View, SafeAreaView, Image, KeyboardAvoidingView} from 'react-native'
 import { useState } from 'react';
 import React from 'react'
 import * as ImagePicker from 'expo-image-picker';
@@ -63,19 +63,22 @@ const CreateDexIndex = ({navigation}) => {
     }
   return (
     <View style={styles.container}>
-        <SafeAreaView>
-            <TextInput style={styles.input} placeholder="Friendmons name" onChangeText={setName}/>
-            <TextInput style={styles.input} placeholder="Health points" keyboardType='number-pad' onChangeText={setHeath}/>
-            <TextInput style={styles.input} placeholder='Attack damage' keyboardType='number-pad' onChangeText={setAttack}/>
-            <TextInput style={styles.input} placeholder='Special ability' onChangeText={setSpecialAbility}/>
-            <Pressable onPress={pickImage}>
-                <Text>Pick Picture</Text>
-            </Pressable>
-            <Image  style={styles.image} source={{uri: image}}/>
-            <Pressable onPress={uploadeFriendInfo}>
-              <Text>Upload</Text>
-            </Pressable>
-        </SafeAreaView>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <SafeAreaView>
+              <TextInput style={styles.input} placeholder="Friendmons name" onChangeText={setName}/>
+              <TextInput style={styles.input} placeholder="Health points" keyboardType='number-pad' onChangeText={setHeath}/>
+              <TextInput style={styles.input} placeholder='Attack damage' keyboardType='number-pad' onChangeText={setAttack}/>
+              <TextInput style={styles.input} placeholder='Special ability' onChangeText={setSpecialAbility}/>
+              <Pressable onPress={pickImage}>
+                  <Text>Pick Picture</Text>
+              </Pressable>
+              <Image  style={styles.image} source={{uri: image}}/>
+              <Pressable onPress={uploadeFriendInfo}>
+                <Text>Upload</Text>
+              </Pressable>
+          </SafeAreaView>
+        </KeyboardAvoidingView>
     </View>
   )
 }
